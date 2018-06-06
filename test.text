@@ -1,0 +1,9 @@
+int salam;    
+void    hi1(void){
+
+return;
+
+
+}    /* 		comm   */
+
+EOF
