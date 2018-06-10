@@ -18,7 +18,7 @@ with io.open('parseTable.txt', 'r') as f:
   while True:
     c = f.read(1)
     if not c:
-      print("End of File")
+      #print("End of File")
       break
     if (cnt<24):
       if c.__eq__('\t'):
@@ -75,15 +75,15 @@ with io.open('parseTable.txt', 'r') as f:
 
 action.remove([])
 goto.remove([])
-print(action)
-print(goto)
+#print(action)
+#print(goto)
 
 grammar=grammar()
-print(grammar)
+#print(grammar)
 
 inp=scanner()
 
-print(inp)
+#print(inp)
 
 s_input=Stack()
 s_input.push(('z',''))
@@ -156,14 +156,14 @@ while True:
     s_parsser.push(s_input.peek())
     s_parsser.push((indx,''))
     #print('push', s_input.peek())
-    print(s_input.peek())
+    #print(s_input.peek())
     ss_push(s_input.peek())
     s_input.pop()
     #print(s_parsser.peek())
   elif s[0].__eq__('r'):
     indx=int(s[1:])
     rule=grammar[indx]
-    print('reduce', rule)
+    #print('reduce', rule)
     generate_code(indx)
     for i in range(0, rule.__len__()-1):
       if not rule[i+1].__eq__(''):
@@ -196,7 +196,8 @@ while True:
     #print(s_input.peek())
   elif s.__eq__('acc'):
     print("Parsed Successfully!")
-    print(code_block)
+    for (i, code) in enumerate(code_block):
+        print("%d\t%s" % (i, code))
     break
   else:
     print("Panic Mode")
